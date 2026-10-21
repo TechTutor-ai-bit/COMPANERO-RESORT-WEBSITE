@@ -1,0 +1,17 @@
+{
+  "mdk.defaultEditor": "Text Editor",
+  "workbench.editorAssociations": {
+    "*.app": "default",
+    "*.global": "default",
+    "*.action": "default",
+    "*.extension": "default",
+    "*.page": "default",
+    "*.service": "default",
+    "*.cim": "default",
+    "*.rule": "default",
+    "*.properties": "default",
+    "*.fragment": "default"
+  },
+  "claudeCode.useTerminal": true,
+  "mdk.platform": "iOS & Android & Web"
+}

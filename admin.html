@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Dashboard | Companero Resort</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <section class="admin-login" data-login-panel>
+        <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
+        <div class="admin-login-card">
+          <div class="kicker">Admin Login</div>
+          <h1 class="serif">Welcome back.</h1>
+          <p class="muted">
+            Sign in to review resort enquiries and reservations.
+          </p>
+          <form class="admin-form" data-login-form>
+            <label for="admin-user">Username</label>
+            <input
+              id="admin-user"
+              name="username"
+              autocomplete="username"
+              required
+            />
+            <label for="admin-password">Password</label>
+            <input
+              id="admin-password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+            <button class="btn btn-primary" type="submit">Sign in</button>
+            <p class="admin-error" data-login-error role="alert"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="admin-dashboard" data-dashboard hidden>
+        <header class="admin-header">
+          <div>
+            <div class="kicker">Companero Resort</div>
+            <h1 class="serif">Enquiries & Reservations</h1>
+          </div>
+          <div class="admin-actions">
+            <a class="btn btn-ghost btn-small" href="index.html">View site</a>
+            <button class="btn btn-ghost btn-small" type="button" data-logout>
+              Log out
+            </button>
+          </div>
+        </header>
+        <div class="admin-stats">
+          <div><strong data-stat="all">0</strong><span>All requests</span></div>
+          <div><strong data-stat="message">0</strong><span>Messages</span></div>
+          <div>
+            <strong data-stat="reservation">0</strong><span>Reservations</span>
+          </div>
+          <div>
+            <strong data-stat="table">0</strong><span>Table requests</span>
+          </div>
+        </div>
+        <div class="admin-toolbar">
+          <div class="admin-tabs" role="tablist">
+            <button class="tab active" type="button" data-admin-filter="all">
+              All
+            </button>
+            <button class="tab" type="button" data-admin-filter="message">
+              Messages
+            </button>
+            <button class="tab" type="button" data-admin-filter="reservation">
+              Reservations
+            </button>
+            <button class="tab" type="button" data-admin-filter="table">
+              Tables
+            </button>
+          </div>
+          <input
+            class="admin-search"
+            type="search"
+            placeholder="Search requests"
+            aria-label="Search requests"
+            data-admin-search
+          />
+          <button class="btn btn-ghost btn-small" type="button" data-clear-all>
+            Clear all
+          </button>
+        </div>
+        <div class="admin-list" data-admin-list></div>
+      </section>
+    </main>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
