@@ -19,33 +19,20 @@
       property="og:image"
       content="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=85"
     />
-    <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Analytics: replace G-XXXXXXXXXX with the project's real measurement ID -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
   </head>
+<body>
   <div class="topbar">
     <div class="container inner">
-      <span>Freetown, Sierra Leone · Open daily</span
-      ><span>Concierge response within an hour</span>
+      <span>Guest requests require manual confirmation</span
+      ><span>Contact for current availability</span>
     </div>
   </div>
   <nav class="nav">
     <div class="container nav-inner">
       <a class="logo" href="index.html">COMPANERO<span>.</span></a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+      <div class="nav-links" id="primary-navigation">
         <a href="index.html">Home</a><a href="about.html">About</a
         ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
         ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -55,17 +42,14 @@
     </div>
   </nav>
   <main>
+    <h1 data-edit="h1-1" class="visually-hidden">About Companero Resort</h1>
     <div class="container breadcrumbs">
       <a href="index.html">Home</a><span>/</span>About
     </div>
     <section class="page-hero">
       <div class="container reveal">
-        <div class="kicker">Our story</div>
-        <h1 class="serif">Rooted here. Designed for everywhere.</h1>
-        <p class="lead" style="margin-top: 25px">
-          Companero is a concept resort built around a simple idea: luxury
-          should feel personal, not performative.
-        </p>
+        <div data-edit="div-1" class="kicker">Our story</div>
+        <h1 data-edit="h1-2" class="serif">Companero Resort in Bureh Town.</h1>
       </div>
     </section>
     <section class="section">
@@ -78,46 +62,19 @@
           />
         </div>
         <div class="reveal">
-          <div class="kicker">The philosophy</div>
-          <h2 class="serif">Luxury is attention.</h2>
-          <p class="lead" style="margin: 22px 0">
-            Imagine stepping onto a warm, golden sandy beach with the sound of
-            gentle waves rolling onto the shore and a refreshing ocean breeze
-            moving through the surrounding tropical trees. The coastline opens
-            up into a wide, beautiful view of clear turquoise-blue water
-            stretching toward the horizon. The beach has a relaxed outdoor
-            atmosphere, with wooden tables and comfortable seating arranged
-            naturally across the sand, giving guests plenty of space to enjoy
-            food, drinks, conversations, or simply sit back and take in the
-            scenery. Large beach umbrellas provide cool shade during the sunny
-            afternoon, creating perfect spots for groups of friends, couples, or
-            families to gather. The atmosphere feels casual, peaceful, and
-            social at the same time. You can imagine friends sharing drinks and
-            stories, families enjoying a meal together, couples watching the
-            waves, or someone simply lying back under an umbrella with a
-            refreshing drink while listening to the ocean. The bright blue sky,
-            warm sand, tropical greenery, and ocean breeze create a setting that
-            feels far removed from the noise and pressure of everyday life. As
-            the afternoon progresses, the beach becomes an ideal place to
-            unwind, enjoy good food, listen to music, watch the sunset, and
-            spend quality time with people you care about.
+          <div data-edit="div-2" class="kicker">The philosophy</div>
+          <h2 data-edit="h2-1" class="serif">Luxury is attention.</h2>
+          <p data-edit="p-1" class="lead" style="margin: 22px 0">
+            Find Companero Resort at 4 Main Kent, Bureh Town. Contact our team
+            any time about accommodation or dining. Requests are reviewed by
+            staff, who will confirm availability directly with you.
           </p>
-          <a
+          <a data-edit="a-1"
             class="btn btn-primary"
             style="margin-top: 25px"
             href="services.html"
             >See our services</a
           >
-        </div>
-      </div>
-    </section>
-    <section class="section-sm">
-      <div class="container">
-        <div class="stat-row reveal">
-          <div class="stat"><strong>2016</strong>Concept founded</div>
-          <div class="stat"><strong>36</strong>Signature rooms</div>
-          <div class="stat"><strong>10</strong>Curated experiences</div>
-          <div class="stat"><strong>7</strong>Distinct point of view</div>
         </div>
       </div>
     </section>
@@ -128,7 +85,7 @@
         <div>
           <a class="logo" href="index.html">COMPANERO RESORT<span>.</span></a>
           <p class="muted" style="margin-top: 16px; max-width: 340px">
-            A cinematic coastal escape where Sierra Leonean warmth meets
+            A cinematic coastal escape where coastal warmth meets
             contemporary luxury.
           </p>
         </div>
@@ -136,7 +93,7 @@
           <h4>Explore</h4>
           <a href="about.html">Our Story</a
           ><a href="services.html">Experiences</a
-          ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+          ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
         </div>
         <div>
           <h4>Plan</h4>
@@ -146,15 +103,14 @@
         </div>
         <div>
           <h4>Contact</h4>
-          <a href="contact.html">Freetown, Sierra Leone</a
-          ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-          ><a href="tel:+23230555551">+23230555551/+23278767876</a
-          ><a href="privacy.html">Privacy Policy</a>
+          <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+          ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span data-year></span> Companero Resort.</span
         ><span></span>
+        <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
       </div>
     </div>
   </footer>
@@ -164,5 +120,7 @@
   </div>
   <div class="toast"></div>
   <div class="cursor-glow"></div>
+  <script src="js/content.js" data-page="about" defer></script>
   <script src="js/main.js"></script>
+</body>
 </html>

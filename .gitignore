@@ -1,0 +1,24 @@
+#  
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/*.log
+*.log
+
+# Setup marker
+.setup_complete
+
+# Dependencies
+vendor/
+
+# Local configuration and backups
+config.local.php
+*.bak
+*.backup
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -6,46 +6,33 @@
     <title>Thank You | Companero Resort</title>
     <meta
       name="description"
-      content="Thank you for contacting Companero Resort. Your request has been received."
+      content="Confirmation of a Companero Resort guest request."
     />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="noindex,follow" />
     <meta property="og:title" content="Thank You | Companero Resort" />
     <meta
       property="og:description"
-      content="Thank you for contacting Companero Resort. Your request has been received."
+      content="Confirmation of a Companero Resort guest request."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
       content="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=85"
     />
-    <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Analytics: replace G-XXXXXXXXXX with the project's real measurement ID -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
   </head>
+<body>
   <div class="topbar">
     <div class="container inner">
-      <span>Freetown, Sierra Leone · Open daily</span
-      ><span>Concierge response within an hour</span>
+      <span>Guest requests require manual confirmation</span
+      ><span>Contact for current availability</span>
     </div>
   </div>
   <nav class="nav">
     <div class="container nav-inner">
       <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+      <div class="nav-links" id="primary-navigation">
         <a href="index.html">Home</a><a href="about.html">About</a
         ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
         ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -65,13 +52,14 @@
       "
     >
       <div class="container reveal">
-        <div class="kicker">Request received</div>
-        <h1 class="serif">Thank you. </h1>
-        <p class="lead" style="margin: 22px auto 30px">
-          Our concierge promise is a response within an hour during operating
-          hours.
+        <div data-edit="div-1" class="kicker">Request received</div>
+        <h1 data-edit="h1-1" class="serif">Thank you.</h1>
+        <p data-edit="p-1" class="lead" style="margin: 22px auto 30px">
+          Your request was saved for staff review. It is not a confirmed
+          reservation or table booking. Keep the reference below for follow-up.
         </p>
-        <a class="btn btn-primary" href="index.html">Back to Companero Resort ↗</a>
+        <p class="muted" data-request-reference></p>
+        <a data-edit="a-1" class="btn btn-primary" href="index.html">Back to Companero Resort ↗</a>
       </div>
     </section>
   </main>
@@ -81,7 +69,7 @@
         <div>
           <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
           <p class="muted" style="margin-top: 16px; max-width: 340px">
-            A cinematic coastal escape where Sierra Leonean warmth meets
+            A cinematic coastal escape where coastal warmth meets
             contemporary luxury.
           </p>
         </div>
@@ -89,7 +77,7 @@
           <h4>Explore</h4>
           <a href="about.html">Our Story</a
           ><a href="services.html">Experiences</a
-          ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+          ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
         </div>
         <div>
           <h4>Plan</h4>
@@ -99,23 +87,36 @@
         </div>
         <div>
           <h4>Contact</h4>
-          <a href="contact.html">Freetown, Sierra Leone</a
-          ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-          ><a href="tel:+23230555551">+23230555551/+23278767876</a
-          ><a href="privacy.html">Privacy Policy</a>
+          <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+          ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span data-year></span> Companero Resort</span
         ><span>Designed by JayDev</span>
+        <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
       </div>
     </div>
   </footer>
+  <script>
+    const reference = new URLSearchParams(location.search).get("reference");
+    const referenceElement = document.querySelector("[data-request-reference]");
+    if (referenceElement && reference && /^[a-f0-9-]{36}$/i.test(reference)) {
+      referenceElement.textContent = `Request reference: ${reference}`;
+    } else {
+      document.querySelector("main .kicker").textContent = "Request status";
+      document.querySelector("main .serif").textContent = "No request was submitted.";
+      document.querySelector("main .lead").textContent = "Use one of the forms on this site to send a request. Visiting this page alone does not submit anything.";
+      referenceElement?.remove();
+    }
+  </script>
   <div class="mobile-cta">
     <a class="btn btn-ghost" href="book-table.html">Table</a
     ><a class="btn btn-primary" href="reservation.html">Book Stay</a>
   </div>
   <div class="toast"></div>
   <div class="cursor-glow"></div>
+  <script src="js/content.js" data-page="thank-you" defer></script>
   <script src="js/main.js"></script>
+</body>
 </html>

@@ -13,15 +13,15 @@
   <body>
     <div class="topbar">
       <div class="container inner">
-        <span>Freetown, Sierra Leone · Open daily</span
-        ><span>Concierge response within an hour</span>
+        <span>Guest requests require manual confirmation</span
+        ><span>Contact for current availability</span>
       </div>
     </div>
     <nav class="nav">
       <div class="container nav-inner">
         <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-        <button class="menu-toggle" aria-label="Open menu">☰</button>
-        <div class="nav-links">
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+        <div class="nav-links" id="primary-navigation">
           <a href="index.html">Home</a><a href="about.html">About</a
           ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
           ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -34,221 +34,9 @@
     </nav>
 
     <main>
-      <div class="container breadcrumbs">
-        <a href="index.html">Home</a><span>/</span
-        ><a href="services.html">Services</a><span>/</span>Rooms
-      </div>
-
-      <section class="listing-hero reveal">
-        <div
-          class="listing-hero__media"
-          style="background-image: url(&quot;images/room1.jpeg&quot;)"
-        ></div>
-        <div class="container">
-          <div class="listing-hero__content">
-            <div class="listing-badges">
-              <span>Oceanfront</span>
-              <span>Private stays</span>
-              <span>Luxury comfort</span>
-            </div>
-            <div class="kicker">Rooms</div>
-            <h1 class="serif">
-              Stay somewhere calm, beautiful, and deeply restful.
-            </h1>
-            <p class="lead">
-              Thoughtful spaces, airy interiors, and serene coastal views
-              designed for a slower, more memorable escape.
-            </p>
-            <div class="listing-actions">
-              <a class="btn btn-primary" href="reservation.html"
-                >Reserve a room</a
-              >
-              <a class="btn btn-ghost" href="services.html">Back to services</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="stat-row">
-            <div class="stat"><strong>24/7</strong> concierge</div>
-            <div class="stat"><strong>Free</strong> breakfast</div>
-            <div class="stat"><strong>3</strong> room types</div>
-            <div class="stat"><strong>4.9</strong> guest reviews</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="kicker">Our accommodation</div>
-              <h2 class="serif">Rooms & suites</h2>
-            </div>
-          </div>
-
-          <div class="listing-card-grid">
-            <article class="listing-card reveal">
-              <div class="listing-card__media">
-                <img src="images/room1.jpeg" alt="room image" />
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Ocean view</span
-                  ><span class="listing-card__price">$240 / night</span>
-                </div>
-                <h3>Deluxe room</h3>
-                <p>
-                  Bright, airy, and quietly luxurious with a king bed, balcony,
-                  and soft natural textures throughout.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>Guests</span>2 adults</div>
-                  <div><span>Bed</span>1 king</div>
-                  <div><span>Size</span>32 m²</div>
-                  <div><span>View</span>Ocean</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  Includes breakfast, high-speed Wi-Fi, daily housekeeping, and
-                  in-room dining service for a seamless stay.
-                </div>
-              </div>
-            </article>
-
-            <article class="listing-card reveal delay-1">
-              <div class="listing-card__media">
-                <img src="images/IMG-20250414-WA0048.jpg.jpeg" alt="" />
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Garden</span
-                  ><span class="listing-card__price">$310 / night</span>
-                </div>
-                <h3>Garden suite</h3>
-                <p>
-                  Open-plan comfort with a private terrace, warm wood finishes,
-                  and a slower pace that feels instantly restful.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>Guests</span>3 adults</div>
-                  <div><span>Bed</span>1 king</div>
-                  <div><span>Size</span>42 m²</div>
-                  <div><span>View</span>Garden</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  Features a reading nook, private lounge area, and easy access
-                  to the resort's wellness and dining spaces.
-                </div>
-              </div>
-            </article>
-
-            <article class="listing-card reveal delay-2">
-              <div class="listing-card__media">
-                <img src="images/room1.jpeg" alt="" />
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Signature</span
-                  ><span class="listing-card__price">$540 / night</span>
-                </div>
-                <h3>Presidential suite</h3>
-                <p>
-                  Our most expansive room, made for elevated stays with
-                  panoramic views, lounge space, and personalized services.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>Guests</span>4 adults</div>
-                  <div><span>Bed</span>2 kings</div>
-                  <div><span>Size</span>70 m²</div>
-                  <div><span>View</span>Panoramic</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  Includes butler support, a dedicated lounge, premium
-                  amenities, and curated options for special occasions.
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-sm">
-        <div class="container">
-          <div class="feature">
-            <img
-              src="images/flat sunray.png"
-              alt="Luxury room interior and lounge area"
-            />
-            <div class="feature-content">
-              <div class="kicker">Everything included</div>
-              <h2 class="serif">
-                Designed for a slower, more memorable kind of stay.
-              </h2>
-              <p
-                style="
-                  margin-top: 18px;
-                  max-width: 520px;
-                  color: rgba(255, 255, 255, 0.76);
-                "
-              >
-                Complimentary breakfast, house service, Wi-Fi, and a discreet
-                concierge team ready to help shape the right experience.
-              </p>
-              <div
-                style="
-                  margin-top: 30px;
-                  display: flex;
-                  gap: 12px;
-                  flex-wrap: wrap;
-                "
-              >
-                <a class="btn btn-primary" href="reservation.html"
-                  >Reserve a room</a
-                >
-                <a class="btn btn-ghost" href="services.html"
-                  >Return to services</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+  <section class="listing-hero reveal"><div class="listing-hero__media" style="background-image: url(&quot;images/room1.jpeg&quot;)"></div><div class="container"><div class="listing-hero__content"><div data-edit="div-1" class="kicker">Accommodation</div><h1 data-edit="h1-1" class="serif">Ask about a stay at Companero Resort.</h1><p data-edit="p-1" class="lead">Contact us with your dates and guest details. Staff will share current room options, rates, and availability.</p><div class="listing-actions"><a data-edit="a-1" class="btn btn-primary" href="reservation.html">Request a stay</a><a data-edit="a-2" class="btn btn-ghost" href="contact.html">Contact us</a></div></div></div></section>
+  <section class="section"><div class="container"><div class="card card-body reveal"><h2 data-edit="h2-1" class="serif">Plan your stay</h2><p data-edit="p-2" class="muted" style="margin-top: 16px">Room types, amenities, rates, and availability are confirmed directly by the resort. Submit a request and our staff will follow up. A request is not a confirmed reservation.</p><div class="listing-actions" style="margin-top: 24px"><a data-edit="a-3" class="btn btn-primary" href="reservation.html">Request a reservation</a><a data-edit="a-4" class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">Get directions</a></div></div></div></section>
+</main>
 
     <footer class="footer">
       <div class="container">
@@ -256,7 +44,7 @@
           <div>
             <a class="logo" href="index.html">COMPANERO<span>.</span></a>
             <p class="muted" style="margin-top: 16px; max-width: 340px">
-              A cinematic coastal escape where Sierra Leonean warmth meets
+              A cinematic coastal escape where coastal warmth meets
               contemporary luxury.
             </p>
           </div>
@@ -264,7 +52,7 @@
             <h4>Explore</h4>
             <a href="about.html">Our Story</a
             ><a href="services.html">Experiences</a
-            ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+            ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
           </div>
           <div>
             <h4>Plan</h4>
@@ -275,15 +63,14 @@
           </div>
           <div>
             <h4>Contact</h4>
-            <a href="contact.html">Freetown, Sierra Leone</a
-            ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-            ><a href="tel:+23230555551">+23230555551/+23278767876</a
-            ><a href="privacy.html">Privacy Policy</a>
+            <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+            ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
           </div>
         </div>
         <div class="footer-bottom">
           <span>© <span data-year></span> Companero Resort.</span
           ><span>Designed JayDev</span>
+          <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
         </div>
       </div>
     </footer>
@@ -293,6 +80,7 @@
     </div>
     <div class="toast"></div>
     <div class="cursor-glow"></div>
-    <script src="js/main.js"></script>
+    <script src="js/content.js" data-page="room" defer></script>
+  <script src="js/main.js"></script>
   </body>
 </html>

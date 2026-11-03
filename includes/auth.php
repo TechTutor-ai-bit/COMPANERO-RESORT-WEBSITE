@@ -1,142 +1,65 @@
 <?php
-/**
- * Companero Resort — Authentication
- * Secure login verification with password hashing
- */
+declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/rate-limiter.php';
 require_once __DIR__ . '/session.php';
 
-class Authentication {
-    private $db;
-    private $error = '';
-    private $lastAttemptTime = 0;
-    private $attemptCount = 0;
-    private $maxAttempts = 5;
-    private $lockoutDuration = 900; // 15 minutes
+final class Authentication
+{
+    private string $error = '';
 
-    public function __construct() {
-        $this->db = Database::getInstance()->getConnection();
-        $this->loadAttemptData();
-    }
-
-    /**
-     * Load previous attempt data from session
-     */
-    private function loadAttemptData() {
-        if (!isset($_SESSION['login_attempts'])) {
-            $_SESSION['login_attempts'] = [];
-        }
-    }
-
-    /**
-     * Check if account is temporarily locked
-     */
-    private function isLockedOut() {
-        $now = time();
-        $attempts = $_SESSION['login_attempts'] ?? [];
-
-        // Filter out old attempts
-        $recentAttempts = array_filter($attempts, function($time) use ($now) {
-            return ($now - $time) < $this->lockoutDuration;
-        });
-
-        $_SESSION['login_attempts'] = $recentAttempts;
-
-        if (count($recentAttempts) >= $this->maxAttempts) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Record failed login attempt
-     */
-    private function recordFailedAttempt() {
-        if (!isset($_SESSION['login_attempts'])) {
-            $_SESSION['login_attempts'] = [];
-        }
-        $_SESSION['login_attempts'][] = time();
-    }
-
-    /**
-     * Clear failed attempts
-     */
-    private function clearAttempts() {
-        $_SESSION['login_attempts'] = [];
-    }
-
-    /**
-     * Authenticate user with username and password
-     * Returns admin_id on success, false on failure
-     */
-    public function login($username, $password) {
-        // Validate input
-        if (empty(trim($username)) || empty(trim($password))) {
-            $this->error = 'Please enter both username and password.';
+    public function login(string $username, string $password): bool
+    {
+        $username = trim($username);
+        if ($username === '' || $password === '' || strlen($username) > 254 || strlen($password) > 1024) {
+            $this->error = 'Invalid username or password.';
             return false;
         }
 
-        // Check if account is locked due to too many attempts
-        if ($this->isLockedOut()) {
-            $this->error = 'Too many failed attempts. Please try again in 15 minutes.';
-            error_log("Login lockout: IP " . $_SERVER['REMOTE_ADDR'] ?? 'unknown');
+        $identity = RateLimiter::clientIdentity();
+        if (!RateLimiter::consume('admin_login', $identity, 5, 900)) {
+            $this->error = 'Too many sign-in attempts. Please wait and try again.';
             return false;
         }
 
-        // Fetch admin by username or email (using prepared statement)
-        $sql = "SELECT id, full_name, username, email, password_hash, role, active 
-                FROM admins 
-                WHERE (username = ? OR email = ?) 
-                LIMIT 1";
-        
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([trim($username), trim($username)]);
+        $pdo = Database::connection();
+        $stmt = $pdo->prepare(
+            'SELECT id, username, password_hash, role, active FROM admins
+             WHERE username = ? OR email = ? LIMIT 1'
+        );
+        $stmt->execute([$username, $username]);
         $admin = $stmt->fetch();
 
-        // Verify password (even if user doesn't exist, to prevent timing attacks)
-        if ($admin && password_verify($password, $admin['password_hash']) && $admin['active']) {
-            // Password is correct and account is active
-            $this->clearAttempts();
-            
-            // Create session
-            SessionManager::create($admin['id'], $admin['username'], $admin['role']);
-            
-            // Update last login timestamp
-            $updateSql = "UPDATE admins SET last_login = NOW() WHERE id = ?";
-            $updateStmt = $this->db->prepare($updateSql);
-            $updateStmt->execute([$admin['id']]);
+        static $dummyHash = null;
+        if ($dummyHash === null) {
+            $dummyHash = password_hash(bin2hex(random_bytes(32)), PASSWORD_DEFAULT);
+        }
+        $passwordMatches = password_verify($password, $admin['password_hash'] ?? $dummyHash);
 
-            return $admin['id'];
-        } else {
-            // Invalid credentials or inactive account
-            $this->recordFailedAttempt();
-            // Generic error message - don't reveal if user exists
+        if (!$admin || !$passwordMatches || !(bool) $admin['active']) {
             $this->error = 'Invalid username or password.';
-            error_log("Failed login attempt: " . ($admin ? 'wrong password' : 'user not found'));
             return false;
         }
+
+        if (!SessionManager::create((int) $admin['id'], $admin['username'], $admin['role'])) {
+            throw new RuntimeException('Unable to establish an authenticated session.');
+        }
+
+        $stmt = $pdo->prepare('UPDATE admins SET last_login = UTC_TIMESTAMP() WHERE id = ?');
+        $stmt->execute([(int) $admin['id']]);
+        RateLimiter::clear('admin_login', $identity);
+
+        return true;
     }
 
-    /**
-     * Get last error message
-     */
-    public function getError() {
+    public function getError(): string
+    {
         return $this->error;
     }
 
-    /**
-     * Hash password for storage
-     */
-    public static function hashPassword($password) {
-        return password_hash($password, PASSWORD_ALGORITHM, ['cost' => PASSWORD_COST]);
-    }
-
-    /**
-     * Verify password against hash
-     */
-    public static function verifyPassword($password, $hash) {
-        return password_verify($password, $hash);
+    public static function hashPassword(string $password): string
+    {
+        return password_hash($password, PASSWORD_DEFAULT, ['cost' => PASSWORD_COST]);
     }
 }

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Companero Resort — Role-Based Permissions
  * Permission checking for different admin roles
@@ -24,6 +26,7 @@ class Permissions {
             'view_reservations',
             'view_messages',
             'view_rooms',
+            'edit_content',
             'manage_admins',
             'manage_settings',
             'view_reports',
@@ -33,6 +36,7 @@ class Permissions {
             'view_reservations',
             'view_messages',
             'view_rooms',
+            'edit_content',
         ],
         'staff' => [
             'view_dashboard',

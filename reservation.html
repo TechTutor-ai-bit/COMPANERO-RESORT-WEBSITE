@@ -19,33 +19,20 @@
       property="og:image"
       content="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=85"
     />
-    <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Analytics: replace G-XXXXXXXXXX with the project's real measurement ID -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
   </head>
+<body>
   <div class="topbar">
     <div class="container inner">
-      <span>Freetown, Sierra Leone · Open daily</span
-      ><span>Concierge response within an hour</span>
+      <span>Guest requests require manual confirmation</span
+      ><span>Contact for current availability</span>
     </div>
   </div>
   <nav class="nav">
     <div class="container nav-inner">
       <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+      <div class="nav-links" id="primary-navigation">
         <a href="index.html">Home</a><a href="about.html">About</a
         ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
         ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -55,18 +42,10 @@
     </div>
   </nav>
   <main>
+    <h1 data-edit="h1-1" class="visually-hidden">Reserve a Stay</h1>
     <div class="container breadcrumbs">
       <a href="index.html">Home</a><span>/</span>Reservation
     </div>
-    <section class="page-hero">
-      <div class="container reveal">
-        <div class="kicker">Reserve your escape</div>
-        <h1 class="serif">Tell us when. We'll handle the rest.</h1>
-        <p class="lead" style="margin-top: 25px">
-          Response time promise: within 45 minutes during operating hours.
-        </p>
-      </div>
-    </section>
     <section class="section">
       <div class="container grid grid-2">
         <div class="card reveal">
@@ -74,66 +53,75 @@
             <form
               class="form-grid"
               data-form
-              data-success="Reservation request sent. Redirecting you to the thank-you page is the next production step."
+              data-kind="reservation"
+              action="api/submissions.php"
+              method="post"
             >
-              <div class="form-field">
-                <label>First name</label><input required />
+              <input type="hidden" name="type" value="reservation" />
+              <div class="visually-hidden" aria-hidden="true">
+                <label for="reservation-website">Leave this field empty</label>
+                <input id="reservation-website" name="website" tabindex="-1" autocomplete="off" />
               </div>
               <div class="form-field">
-                <label>Last name</label><input required />
+                <label for="reservation-first-name">First name</label
+                ><input id="reservation-first-name" name="first_name" autocomplete="given-name" required />
               </div>
               <div class="form-field">
-                <label>Check-in</label><input type="date" required />
+                <label for="reservation-last-name">Last name</label
+                ><input id="reservation-last-name" name="last_name" autocomplete="family-name" required />
               </div>
               <div class="form-field">
-                <label>Check-out</label><input type="date" required />
+                <label for="reservation-check-in">Check-in</label
+                ><input id="reservation-check-in" name="check_in" type="date" required />
               </div>
               <div class="form-field">
-                <label>Guests</label
-                ><select>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5+</option>
+                <label for="reservation-check-out">Check-out</label
+                ><input id="reservation-check-out" name="check_out" type="date" required />
+              </div>
+              <div class="form-field">
+                <label for="reservation-guests">Guests</label
+                ><select id="reservation-guests" name="guests">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5+">5+</option>
                 </select>
               </div>
               <div class="form-field">
-                <label>Room</label
-                ><select>
-                  <option>Ocean Villa</option>
-                  <option>Garden Suite</option>
-                  <option>Companero Suite</option>
+                <label for="reservation-room">Room</label
+                ><select id="reservation-room" name="room">
+                  <option>Any available room</option>
                 </select>
               </div>
               <div class="form-field full">
-                <label>Email</label><input type="email" required />
+                <label for="reservation-email">Email</label
+                ><input id="reservation-email" name="email" type="email" autocomplete="email" required />
               </div>
               <div class="form-field full">
-                <label>Special requests</label
+                <label for="reservation-requests">Special requests</label
                 ><textarea
+                  id="reservation-requests"
+                  name="special_requests"
                   placeholder="Arrival time, celebration, dietary notes..."
                 ></textarea>
               </div>
               <div class="form-field full">
-                <button class="btn btn-primary">Request reservation ↗</button>
+                <button class="btn btn-primary" type="submit">Request reservation ↗</button>
               </div>
+              <p class="form-field full muted" id="reservation-notice">
+                This sends a request for staff review, not a confirmed booking.
+                See our <a href="privacy.html">privacy notice</a>.
+              </p>
             </form>
           </div>
         </div>
         <div class="contact-card reveal delay-1">
-          <div class="kicker">Need help?</div>
-          <h2 class="serif">A real person is one click away.</h2>
-          <p class="lead" style="margin-top: 20px">
-            For groups, weddings or complex itineraries, contact our concierge
-            directly.
-          </p>
           <div class="contact-list">
-            <div>
-              <strong>Response promise</strong>Within 45 minutes during
-              operating hours
+            <div data-edit="div-1">
+              <strong>Response timing</strong>Our contact lines are available 24/7.
             </div>
-            <div><strong>Email</strong>companero.sl@gmail.com</div>
-            <div><strong>Phone</strong>+23230555551/+23278767876</div>
+            <div><strong data-edit="strong-1">Email</strong><a data-site="email" href="mailto:Companeroresort.sl@gmail.com">Companeroresort.sl@gmail.com</a></div>
+            <div><strong data-edit="strong-2">Phone</strong><a data-site="phone" href="tel:+23230555551">+232 30 555 551</a></div>
           </div>
         </div>
       </div>
@@ -145,7 +133,7 @@
         <div>
           <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
           <p class="muted" style="margin-top: 16px; max-width: 340px">
-            A cinematic coastal escape where Sierra Leonean warmth meets
+            A cinematic coastal escape where coastal warmth meets
             contemporary luxury.
           </p>
         </div>
@@ -153,7 +141,7 @@
           <h4>Explore</h4>
           <a href="about.html">Our Story</a
           ><a href="services.html">Experiences</a
-          ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+          ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
         </div>
         <div>
           <h4>Plan</h4>
@@ -163,15 +151,14 @@
         </div>
         <div>
           <h4>Contact</h4>
-          <a href="contact.html">Freetown, Sierra Leone</a
-          ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-          ><a href="tel:+23230555551">+23230555551/+23278767876</a
-          ><a href="privacy.html">Privacy Policy</a>
+          <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+          ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span data-year></span> Companero Resort.</span
         ><span>Designed by JavDev.</span>
+        <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
       </div>
     </div>
   </footer>
@@ -181,5 +168,7 @@
   </div>
   <div class="toast"></div>
   <div class="cursor-glow"></div>
+  <script src="js/content.js" data-page="reservation" defer></script>
   <script src="js/main.js"></script>
+</body>
 </html>

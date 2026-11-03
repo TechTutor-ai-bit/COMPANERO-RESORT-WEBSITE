@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Companero Resort — Session Management
  * Secure session handling with timeout and regeneration
@@ -12,25 +14,24 @@ class SessionManager {
      * Initialize secure session
      */
     public static function init() {
-        // Set session name
-        session_name(ADMIN_SESSION_NAME);
-        
-        // Set secure cookie options for HTTPS (set to true on production)
-        $cookie_options = [
-            'lifetime' => SESSION_LIFETIME,
-            'path' => '/companero-resort-premium/',  // Adjust to your path
-            'domain' => '',
-            'secure' => false,  // Set to true on HTTPS
-            'httponly' => true,
-            'samesite' => 'Strict'
-        ];
-        
-        session_set_cookie_params($cookie_options);
-        
-        // Start session if not already started
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+        if (session_status() !== PHP_SESSION_NONE) {
+            return;
         }
+        if (APP_ENV === 'production' && PHP_SAPI !== 'cli' && !app_request_is_https()) {
+            http_response_code(400);
+            header('Content-Type: text/plain; charset=utf-8');
+            exit('HTTPS is required.');
+        }
+
+        session_name(ADMIN_SESSION_NAME);
+        session_set_cookie_params([
+            'lifetime' => SESSION_LIFETIME,
+            'path' => SESSION_COOKIE_PATH,
+            'secure' => SESSION_COOKIE_SECURE,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]);
+        session_start();
     }
 
     /**
@@ -68,15 +69,18 @@ class SessionManager {
      */
     public static function create($admin_id, $username, $role) {
         // Regenerate ID to prevent fixation attacks
-        session_regenerate_id(true);
+        if (!session_regenerate_id(true)) {
+            return false;
+        }
 
         // Store authentication data
         $_SESSION['admin_id'] = (int)$admin_id;
-        $_SESSION['username'] = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-        $_SESSION['role'] = htmlspecialchars($role, ENT_QUOTES, 'UTF-8');
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = $role;
         $_SESSION['authenticated'] = true;
         $_SESSION['login_time'] = time();
         $_SESSION['last_activity'] = time();
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
         return true;
     }
@@ -112,15 +116,13 @@ class SessionManager {
         // Delete session cookie
         if (ini_get('session.use_cookies')) {
             $params = session_get_cookie_params();
-            setcookie(
-                session_name(),
-                '',
-                time() - 42000,
-                $params['path'],
-                $params['domain'],
-                $params['secure'],
-                $params['httponly']
-            );
+            setcookie(session_name(), '', [
+                'expires' => time() - 42000,
+                'path' => $params['path'],
+                'secure' => $params['secure'],
+                'httponly' => $params['httponly'],
+                'samesite' => 'Strict',
+            ]);
         }
 
         // Destroy the session
@@ -137,7 +139,7 @@ class SessionManager {
         if (!self::isAuthenticated()) {
             // Clear any stale session data
             self::destroy();
-            header('Location: /companero-resort-premium/admin/login.php');
+            header('Location: login.php');
             exit;
         }
     }

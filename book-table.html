@@ -22,155 +22,204 @@
       property="og:image"
       content="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=85"
     />
-    <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Analytics: replace G-XXXXXXXXXX with the project's real measurement ID -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
   </head>
-  <div class="topbar">
-    <div class="container inner">
-      <span>Freetown, Sierra Leone · Open daily</span
-      ><span>Concierge response within an hour</span>
-    </div>
-  </div>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <div class="nav-links">
-        <a href="index.html">Home</a><a href="about.html">About</a
-        ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
-        ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
-        ><a href="contact.html">Contact</a>
-        <a class="btn btn-primary btn-small" href="reservation.html">Reserve</a>
+  <body>
+    <div class="topbar">
+      <div class="container inner">
+        <span>Guest requests require manual confirmation</span
+        ><span>Contact for current availability</span>
       </div>
     </div>
-  </nav>
-  <main>
-    <div class="container breadcrumbs">
-      <a href="index.html">Home</a><span>/</span>Book a Table
-    </div>
-    <section class="page-hero">
-      <div class="container reveal">
-        <div class="kicker">Dining reservations</div>
-        <h1 class="serif">Make dinner the destination.</h1>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          ☰
+        </button>
+        <div class="nav-links" id="primary-navigation">
+          <a href="index.html">Home</a><a href="about.html">About</a
+          ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
+          ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
+          ><a href="contact.html">Contact</a>
+          <a class="btn btn-primary btn-small" href="reservation.html"
+            >Reserve</a
+          >
+        </div>
       </div>
-    </section>
-    <section class="section">
-      <div class="container grid grid-2">
-        <div class="card reveal">
-          <div class="card-body">
-            <form
-              class="form-grid"
-              data-form
-              data-success="Table request received. We will confirm availability shortly."
-            >
-              <div class="form-field">
-                <label>Name</label><input required />
-              </div>
-              <div class="form-field">
-                <label>Phone</label><input required />
-              </div>
-              <div class="form-field">
-                <label>Date</label><input type="date" required />
-              </div>
-              <div class="form-field">
-                <label>Time</label><input type="time" required />
-              </div>
-              <div class="form-field">
-                <label>Guests</label
-                ><select>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5+</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label>Occasion</label
-                ><select>
-                  <option>Casual dinner</option>
-                  <option>Birthday</option>
-                  <option>Anniversary</option>
-                  <option>Business</option>
-                </select>
-              </div>
-              <div class="form-field full">
-                <label>Notes</label><textarea></textarea>
-              </div>
-              <div class="form-field full">
-                <button class="btn btn-primary">Book a table ↗</button>
-              </div>
-            </form>
+    </nav>
+    <main>
+      <div class="container breadcrumbs">
+        <a href="index.html">Home</a><span>/</span>Book a Table
+      </div>
+      <section class="page-hero">
+        <div class="container reveal">
+          <div data-edit="div-1" class="kicker">Dining reservations</div>
+          <h1 data-edit="h1-1" class="serif">Make dinner the destination.</h1>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container grid grid-2">
+          <div class="card reveal">
+            <div class="card-body">
+              <form
+                class="form-grid"
+                data-form
+                data-kind="table"
+                action="api/submissions.php"
+                method="post"
+              >
+                <input type="hidden" name="type" value="table" />
+                <div class="visually-hidden" aria-hidden="true">
+                  <label for="table-website">Leave this field empty</label>
+                  <input
+                    id="table-website"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="table-name">Name</label
+                  ><input
+                    id="table-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="table-phone">Phone</label
+                  ><input
+                    id="table-phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="table-date">Date</label
+                  ><input
+                    id="table-date"
+                    name="table_date"
+                    type="date"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="table-time">Time</label
+                  ><input
+                    id="table-time"
+                    name="table_time"
+                    type="time"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="table-guests">Guests</label
+                  ><select id="table-guests" name="guests">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5+">5+</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="table-occasion">Occasion</label
+                  ><select id="table-occasion" name="occasion">
+                    <option>Casual dinner</option>
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Business</option>
+                  </select>
+                </div>
+                <div class="form-field full">
+                  <label for="table-notes">Notes</label
+                  ><textarea id="table-notes" name="notes"></textarea>
+                </div>
+                <div class="form-field full">
+                  <button class="btn btn-primary" type="submit">
+                    Book a table ↗
+                  </button>
+                </div>
+                <p class="form-field full muted" id="table-notice">
+                  This sends a request for staff review, not a confirmed
+                  booking. See our <a href="privacy.html">privacy notice</a>.
+                </p>
+              </form>
+            </div>
+          </div>
+          <div class="reveal delay-1">
+            <img
+              style="
+                height: 100%;
+                min-height: 480px;
+                object-fit: cover;
+                border-radius: 26px;
+              "
+              src="images/jollof.png"
+              alt="Elegant resort dining experience"
+            />
           </div>
         </div>
-        <div class="reveal delay-1">
-          <img
-            style="
-              height: 100%;
-              min-height: 480px;
-              object-fit: cover;
-              border-radius: 26px;
-            "
-            src="images/jollof.png"
-            alt="Elegant resort dining experience"
-          />
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
+            <p class="muted" style="margin-top: 16px; max-width: 340px">
+              A cinematic coastal escape where coastal warmth meets contemporary
+              luxury.
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <a href="about.html">Our Story</a
+            ><a href="services.html">Experiences</a
+            ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
+          </div>
+          <div>
+            <h4>Plan</h4>
+            <a href="reservation.html">Reservation</a
+            ><a href="book-table.html">Book a Table</a
+            ><a href="pricing.html">Service Pricing</a
+            ><a href="faq.html">FAQs</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <a data-site="address"
+              href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town"
+              target="_blank"
+              rel="noopener noreferrer"
+              >4 Main Kent, Bureh Town</a
+            ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a
+            ><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a
+            ><a href="privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span data-year></span> Companero Resort</span
+          ><span>Designed by JayDev</span>
+          <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
         </div>
       </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-          <p class="muted" style="margin-top: 16px; max-width: 340px">
-            A cinematic coastal escape where Sierra Leonean warmth meets
-            contemporary luxury.
-          </p>
-        </div>
-        <div>
-          <h4>Explore</h4>
-          <a href="about.html">Our Story</a
-          ><a href="services.html">Experiences</a
-          ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
-        </div>
-        <div>
-          <h4>Plan</h4>
-          <a href="reservation.html">Reservation</a
-          ><a href="book-table.html">Book a Table</a
-          ><a href="pricing.html">Service Pricing</a><a href="faq.html">FAQs</a>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <a href="contact.html">Freetown, Sierra Leone</a
-          ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-          ><a href="tel:+23230555551">+23230555551/+23278767876</a
-          ><a href="privacy.html">Privacy Policy</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year></span> Companero Resort</span
-        ><span>Designed by JayDev</span>
-      </div>
+    </footer>
+    <div class="mobile-cta">
+      <a class="btn btn-ghost" href="book-table.html">Table</a
+      ><a class="btn btn-primary" href="reservation.html">Book Stay</a>
     </div>
-  </footer>
-  <div class="mobile-cta">
-    <a class="btn btn-ghost" href="book-table.html">Table</a
-    ><a class="btn btn-primary" href="reservation.html">Book Stay</a>
-  </div>
-  <div class="toast"></div>
-  <div class="cursor-glow"></div>
+    <div class="toast"></div>
+    <div class="cursor-glow"></div>
+    <script src="js/content.js" data-page="book-table" defer></script>
   <script src="js/main.js"></script>
+  </body>
 </html>

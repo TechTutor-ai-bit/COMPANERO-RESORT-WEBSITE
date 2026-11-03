@@ -13,15 +13,15 @@
   <body>
     <div class="topbar">
       <div class="container inner">
-        <span>Freetown, Sierra Leone · Open daily</span
-        ><span>Concierge response within an hour</span>
+        <span>Guest requests require manual confirmation</span
+        ><span>Contact for current availability</span>
       </div>
     </div>
     <nav class="nav">
       <div class="container nav-inner">
         <a class="logo" href="index.html">COMPANERO<span>.</span></a>
-        <button class="menu-toggle" aria-label="Open menu">☰</button>
-        <div class="nav-links">
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+        <div class="nav-links" id="primary-navigation">
           <a href="index.html">Home</a><a href="about.html">About</a
           ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
           ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -34,219 +34,9 @@
     </nav>
 
     <main>
-      <div class="container breadcrumbs">
-        <a href="index.html">Home</a><span>/</span
-        ><a href="services.html">Services</a><span>/</span>Restaurant
-      </div>
-
-      <section class="listing-hero reveal">
-        <div
-          class="listing-hero__media"
-          style="background-image: url(&quot;images/bar1.jpeg&quot;)"
-        ></div>
-        <div class="container">
-          <div class="listing-hero__content">
-            <div class="listing-badges">
-              <span>Coastal dining</span>
-              <span>Chef-led menu</span>
-              <span>Private events</span>
-            </div>
-            <div class="kicker">Restaurant</div>
-            <h1 class="serif">
-              A refined place to slow down and savor the coast.
-            </h1>
-            <p class="lead">
-              Fresh seafood, local ingredients, and warm hospitality shaped into
-              unforgettable dinners, lunches, and sunset moments.
-            </p>
-            <div class="listing-actions">
-              <a class="btn btn-primary" href="book-table.html">Book a table</a>
-              <a class="btn btn-ghost" href="services.html">Back to services</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="stat-row">
-            <div class="stat"><strong>12+</strong> signature dishes</div>
-            <div class="stat"><strong>4.9</strong> guest rating</div>
-            <div class="stat"><strong>6am</strong> breakfast start</div>
-            <div class="stat"><strong>24/7</strong> concierge support</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <div class="kicker">Signature dishes</div>
-              <h2 class="serif">From our kitchen</h2>
-            </div>
-          </div>
-
-          <div class="listing-card-grid">
-            <article class="listing-card reveal">
-              <div class="listing-card__media">
-                <img src="images/fish.png" alt="" /> <style></style>
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Seafood</span
-                  ><span class="listing-card__price">Le 210,000</span>
-                </div>
-                <h3>Coastal seafood platter</h3>
-                <p>
-                  Fresh grilled catch, local rice, crisp vegetables, and a house
-                  sauce for an indulgent island dinner.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>For</span>2 guests</div>
-                  <div><span>Spice</span>Medium</div>
-                  <div><span>Best</span>Sunset</div>
-                  <div><span>Chef</span>Special</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  Served with steamed rice, greens, and a seasonal side. Ideal
-                  for couples and celebratory evenings.
-                </div>
-              </div>
-            </article>
-
-            <article class="listing-card reveal delay-1">
-              <div class="listing-card__media">
-                <img src="images/jollof.png" alt="" />
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Classic</span
-                  ><span class="listing-card__price">Le 120,000</span>
-                </div>
-                <h3>Jollof rice &amp; grilled fish</h3>
-                <p>
-                  Rich, smoky rice and aromatic grilled fish served with a side
-                  of crispy plantain and local herbs.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>For</span>1 guest</div>
-                  <div><span>Spice</span>Medium</div>
-                  <div><span>Pairing</span>Fresh juice</div>
-                  <div><span>Diet</span>Contains fish</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  The resort favorite for lunch and informal dinners, served
-                  fresh and prepared with slow-cooked seasoning.
-                </div>
-              </div>
-            </article>
-
-            <article class="listing-card reveal delay-2">
-              <div class="listing-card__media">
-                <img src="images/cassava.jpg" alt="" />
-              </div>
-              <div class="listing-card__body">
-                <div class="listing-card__meta">
-                  <span>Comfort</span
-                  ><span class="listing-card__price">Le 95,000</span>
-                </div>
-                <h3>African Dish &amp; Drinks</h3>
-                <p>
-                  Slow-simmered groundnut stew with rich broth, tender meat, and
-                  soft, handmade fufu.
-                </p>
-                <div class="listing-card__details">
-                  <div><span>For</span>1 guest</div>
-                  <div><span>Spice</span>Mild</div>
-                  <div><span>Style</span>Traditional</div>
-                  <div><span>Diet</span>Contains nuts</div>
-                </div>
-                <div class="listing-card__footer">
-                  <button
-                    class="btn btn-ghost"
-                    type="button"
-                    data-detail-toggle
-                    aria-expanded="false"
-                  >
-                    Show details
-                  </button>
-                  <a class="btn btn-primary" href="reservation.html">Reserve</a>
-                </div>
-                <div class="more-details">
-                  Created for comfort and warmth, this dish is perfect on cooler
-                  evenings and for guests seeking a local favorite.
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-sm">
-        <div class="container">
-          <div class="feature">
-            <img
-              src="images/bar night view.jpeg"
-              alt="Restaurant interior dining area"
-            />
-            <div class="feature-content">
-              <div class="kicker">Every day</div>
-              <h2 class="serif">
-                A warm dining room for slow mornings and long evenings.
-              </h2>
-              <p
-                style="
-                  margin-top: 18px;
-                  max-width: 520px;
-                  color: rgba(255, 255, 255, 0.76);
-                "
-              >
-                Reserve a table for a quiet breakfast, a celebratory dinner, or
-                a private gathering with our chefs.
-              </p>
-              <div
-                style="
-                  margin-top: 30px;
-                  display: flex;
-                  gap: 12px;
-                  flex-wrap: wrap;
-                "
-              >
-                <a class="btn btn-primary" href="book-table.html"
-                  >Book a table</a
-                >
-                <a class="btn btn-ghost" href="services.html"
-                  >Back to services</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+  <section class="listing-hero reveal"><div class="listing-hero__media" style="background-image: url(&quot;images/bar1.jpeg&quot;)"></div><div class="container"><div class="listing-hero__content"><div data-edit="div-1" class="kicker">Dining</div><h1 data-edit="h1-1" class="serif">Ask about dining at Companero Resort.</h1><p data-edit="p-1" class="lead">Contact us for current menu information and to request a table. Staff will review your requested date and time and confirm availability.</p><div class="listing-actions"><a data-edit="a-1" class="btn btn-primary" href="book-table.html">Request a table</a><a data-edit="a-2" class="btn btn-ghost" href="contact.html">Contact us</a></div></div></div></section>
+  <section class="section"><div class="container"><div class="card card-body reveal"><h2 data-edit="h2-1" class="serif">Dining inquiries</h2><p data-edit="p-2" class="muted" style="margin-top: 16px">Menu items, prices, and availability are confirmed by the resort. Contact us directly for current details. A table request is not confirmed until staff respond.</p><div class="listing-actions" style="margin-top: 24px"><a data-edit="a-3" class="btn btn-primary" href="book-table.html">Request a table</a><a data-edit="a-4" class="btn btn-ghost" href="menu.html">Ask about the menu</a></div></div></div></section>
+</main>
 
     <footer class="footer">
       <div class="container">
@@ -254,7 +44,7 @@
           <div>
             <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
             <p class="muted" style="margin-top: 16px; max-width: 340px">
-              A cinematic coastal escape where Sierra Leonean warmth meets
+              A cinematic coastal escape where coastal warmth meets
               contemporary luxury.
             </p>
           </div>
@@ -262,7 +52,7 @@
             <h4>Explore</h4>
             <a href="about.html">Our Story</a
             ><a href="services.html">Experiences</a
-            ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+            ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
           </div>
           <div>
             <h4>Plan</h4>
@@ -273,15 +63,14 @@
           </div>
           <div>
             <h4>Contact</h4>
-            <a href="contact.html">Freetown, Sierra Leone</a
-            ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-            ><a href="tel:+23230555551">+23230555551/+23278767876</a
-            ><a href="privacy.html">Privacy Policy</a>
+            <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+            ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
           </div>
         </div>
         <div class="footer-bottom">
           <span>© <span data-year></span> Companero Resort.</span
           ><span>Designed JayDev</span>
+          <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
         </div>
       </div>
     </footer>
@@ -291,6 +80,7 @@
     </div>
     <div class="toast"></div>
     <div class="cursor-glow"></div>
-    <script src="js/main.js"></script>
+    <script src="js/content.js" data-page="restaurant" defer></script>
+  <script src="js/main.js"></script>
   </body>
 </html>

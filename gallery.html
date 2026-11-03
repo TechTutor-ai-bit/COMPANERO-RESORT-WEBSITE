@@ -6,7 +6,7 @@
     <title>Companero Resort Gallery | Rooms, Dining & Experiences</title>
     <meta
       name="description"
-      content="Browse the Companero Resort visual gallery featuring rooms, dining, wellness and destination experiences."
+      content="View photos of Companero Resort in Bureh Town."
     />
     <meta name="robots" content="index,follow" />
     <meta
@@ -15,40 +15,27 @@
     />
     <meta
       property="og:description"
-      content="Browse the Companero Resort visual gallery featuring rooms, dining, wellness and destination experiences."
+      content="View photos of Companero Resort in Bureh Town."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
       content="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1600&q=85"
     />
-    <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Analytics: replace G-XXXXXXXXXX with the project's real measurement ID -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX");
-    </script>
   </head>
+<body>
   <div class="topbar">
     <div class="container inner">
-      <span>Freetown, Sierra Leone · Open daily</span
-      ><span>Concierge response within an hour</span>
+      <span>Guest requests require manual confirmation</span
+      ><span>Contact for current availability</span>
     </div>
   </div>
   <nav class="nav">
     <div class="container nav-inner">
       <a class="logo" href="index.html">COMPANERO <span>RESORT.</span></a>
-      <button class="menu-toggle" aria-label="Open menu">☰</button>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+      <div class="nav-links" id="primary-navigation">
         <a href="index.html">Home</a><a href="about.html">About</a
         ><a href="services.html">Services</a><a href="gallery.html">Gallery</a
         ><a href="menu.html">Menu</a><a href="blog.html">Journal</a
@@ -63,9 +50,9 @@
     </div>
     <section class="page-hero">
       <div class="container reveal">
-        <div class="kicker">Visual diary</div>
-        <h1 class="serif">See the stay before you arrive.</h1>
-        <p class="lead" style="margin-top: 25px">
+        <div data-edit="div-1" class="kicker">Visual diary</div>
+        <h1 data-edit="h1-1" class="serif">See the stay before you arrive.</h1>
+        <p data-edit="p-1" class="lead" style="margin-top: 25px">
           A living collection of rooms, food, light and slow moments.
         </p>
       </div>
@@ -73,11 +60,10 @@
     <section class="section">
       <div class="container">
         <div class="tabs reveal">
-          <button class="tab active" data-filter="all">All</button
-          ><button class="tab" data-filter="rooms">Rooms</button
-          ><button class="tab" data-filter="dining">Dining</button
-          ><button class="tab" data-filter="wellness">Wellness</button
-          ><button class="tab" data-filter="experience">Experiences</button>
+          <button data-edit="button-1" class="tab active" type="button" data-filter="all" aria-pressed="true">All</button
+          ><button data-edit="button-2" class="tab" type="button" data-filter="rooms" aria-pressed="false">Rooms</button
+          ><button data-edit="button-3" class="tab" type="button" data-filter="dining" aria-pressed="false">Dining</button
+          ><button data-edit="button-4" class="tab" type="button" data-filter="stay" aria-pressed="false">Resort</button>
         </div>
         <div class="masonry">
           <div class="gallery-item reveal" data-category="stay">
@@ -86,7 +72,7 @@
               src="images/imagess/flat.jpeg"
               alt="flat front View"
             />
-            <div class="gallery-caption">Resort entrance</div>
+            <div data-edit="div-2" class="gallery-caption">Resort entrance</div>
           </div>
           <div class="gallery-item reveal" data-category="stay">
             <img
@@ -94,63 +80,63 @@
               src="images/front view.jpeg"
               alt="Golden hour at Companero Resort"
             />
-            <div class="gallery-caption">Resort exterior in daylight</div>
+            <div data-edit="div-3" class="gallery-caption">Resort exterior in daylight</div>
           </div>
           <div class="gallery-item reveal" data-category="rooms">
             <img
               data-lightbox
               src="images/room1.jpeg"
-              alt="The suite at Companero Resort"
+              alt="Guest room at Companero Resort"
             />
-            <div class="gallery-caption">Ocean-view guest room</div>
+            <div data-edit="div-4" class="gallery-caption">Guest room</div>
           </div>
           <div class="gallery-item reveal" data-category="stay">
             <img
               data-lightbox
               src="images/room 2.jpeg"
-              alt="Garden path at Companero Resort"
+              alt="Interior at Companero Resort"
             />
-            <div class="gallery-caption">Comfortable guest room</div>
+            <div data-edit="div-5" class="gallery-caption">Resort interior</div>
           </div>
           <div class="gallery-item reveal" data-category="dining">
             <img
               data-lightbox
               src="images/dinner.jpeg"
-              alt="Chef's table at Companero Resort"
+              alt="Dining table at Companero Resort"
             />
-            <div class="gallery-caption">Celebration dining setup</div>
+            <div data-edit="div-6" class="gallery-caption">Dining table setup</div>
           </div>
           <div class="gallery-item reveal" data-category="dining">
             <img
               data-lightbox
               src="images/bar night view.jpeg"
-              alt="Dinner by candlelight at Companero Resort"
+              alt="Dining area at Companero Resort"
             />
-            <div class="gallery-caption">Evening dining by the coast</div>
+            <div data-edit="div-7" class="gallery-caption">Resort dining area</div>
           </div>
-          <div class="gallery-item reveal" data-category="wellness">
+          <div class="gallery-item reveal" data-category="stay">
             <img
               data-lightbox
               src="images/beach view.jpeg"
-              alt="Spa ritual at Companero Resort"
+              alt="Coastal view near Companero Resort"
             />
-            <div class="gallery-caption">Beachside dining and relaxation</div>
+            <div data-edit="div-8" class="gallery-caption">Coastal view</div>
           </div>
-          <div class="gallery-item reveal" data-category="experience">
+          <div class="gallery-item reveal" data-category="dining">
             <img
               data-lightbox
               src="images/food.png"
-              alt="Beyond the resort at Companero Resort"
+              alt="Dish served at Companero Resort"
             />
-            <div class="gallery-caption">Fresh coastal seafood</div>
+            <div data-edit="div-9" class="gallery-caption">Food at the resort</div>
           </div>
         </div>
       </div>
     </section>
   </main>
-  <div class="lightbox">
-    <button class="lightbox-close" aria-label="Close">×</button
-    ><img src="" alt="Companero Resort gallery preview" />
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image preview">
+    <button class="lightbox-close" type="button" aria-label="Close gallery preview">×</button
+    ><img alt="Companero Resort gallery preview" hidden />
   </div>
   <footer class="footer">
     <div class="container">
@@ -158,7 +144,7 @@
         <div>
           <a class="logo" href="index.html">COMPANERO<span>.</span></a>
           <p class="muted" style="margin-top: 16px; max-width: 340px">
-            A cinematic coastal escape where Sierra Leonean warmth meets
+            A cinematic coastal escape where coastal warmth meets
             contemporary luxury.
           </p>
         </div>
@@ -166,7 +152,7 @@
           <h4>Explore</h4>
           <a href="about.html">Our Story</a
           ><a href="services.html">Experiences</a
-          ><a href="gallery.html">Gallery</a><a href="blog.html">Journal</a>
+          ><a href="gallery.html">Gallery</a><a href="blog.html">Visit</a>
         </div>
         <div>
           <h4>Plan</h4>
@@ -176,15 +162,14 @@
         </div>
         <div>
           <h4>Contact</h4>
-          <a href="contact.html">Freetown, Sierra Leone</a
-          ><a href="mailto:companero.sl@gmail.com">companero.sl@gmail.com</a
-          ><a href="tel:+23230555551">+23230555551/+23278767876</a
-          ><a href="privacy.html">Privacy Policy</a>
+          <a data-site="address" href="https://www.google.com/maps/search/?api=1&amp;query=Companero%20Resort%2C%206R4V%2BHQH%2C%20Bureh%20Town" target="_blank" rel="noopener noreferrer">4 Main Kent, Bureh Town</a
+          ><a data-site="email" data-site-text="no" href="mailto:Companeroresort.sl@gmail.com">Email us</a><a data-site="phone" data-site-prefix="Call " href="tel:+23230555551">Call +232 30 555 551</a><a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>© <span data-year></span> Companero Resort.</span
         ><span>Designed JayDev.</span>
+        <a class="footer-admin-link" href="admin/dashboard.php" rel="nofollow">Admin Dashboard</a>
       </div>
     </div>
   </footer>
@@ -194,5 +179,7 @@
   </div>
   <div class="toast"></div>
   <div class="cursor-glow"></div>
+  <script src="js/content.js" data-page="gallery" defer></script>
   <script src="js/main.js"></script>
+</body>
 </html>
