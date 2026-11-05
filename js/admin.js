@@ -1,32 +1,59 @@
-const entries = Array.from(document.querySelectorAll("[data-request-type]"));
-const search = document.querySelector("[data-admin-search]");
-let activeFilter = "all";
 
-function filterRequests() {
-  const query = search.value.trim().toLocaleLowerCase();
-  entries.forEach(entry => {
-    const matchesType = activeFilter === "all" || entry.dataset.requestType === activeFilter;
-    const matchesText = entry.dataset.requestSearch.toLocaleLowerCase().includes(query);
-    entry.hidden = !matchesType || !matchesText;
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const entries = Array.from(
+    document.querySelectorAll("[data-request-type]")
+  );
 
-document.querySelectorAll("[data-admin-filter]").forEach(button => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.adminFilter;
-    document.querySelectorAll("[data-admin-filter]").forEach(tab => {
-      const selected = tab === button;
-      tab.classList.toggle("active", selected);
-      tab.setAttribute("aria-pressed", String(selected));
+  const search = document.querySelector("[data-admin-search]");
+  const filterButtons = document.querySelectorAll("[data-admin-filter]");
+  const confirmForms = document.querySelectorAll("form[data-confirm]");
+
+  let activeFilter = "all";
+
+  function filterRequests() {
+    const query = search?.value.trim().toLowerCase() || "";
+
+    entries.forEach((entry) => {
+      const requestType = entry.dataset.requestType || "";
+      const searchableText = (
+        entry.dataset.requestSearch || entry.textContent || ""
+      ).toLowerCase();
+
+      const matchesType =
+        activeFilter === "all" || requestType === activeFilter;
+
+      const matchesText = searchableText.includes(query);
+
+      entry.hidden = !(matchesType && matchesText);
     });
-    filterRequests();
-  });
-});
+  }
 
-search?.addEventListener("input", filterRequests);
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.adminFilter || "all";
 
-document.querySelectorAll("form[data-confirm]").forEach(form => {
-  form.addEventListener("submit", event => {
-    if (!window.confirm(form.dataset.confirm)) event.preventDefault();
+      filterButtons.forEach((tab) => {
+        const selected = tab === button;
+
+        tab.classList.toggle("active", selected);
+        tab.setAttribute("aria-pressed", String(selected));
+      });
+
+      filterRequests();
+    });
   });
+
+  search?.addEventListener("input", filterRequests);
+
+  confirmForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      const message = form.dataset.confirm;
+
+      if (message && !window.confirm(message)) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  filterRequests();
 });
